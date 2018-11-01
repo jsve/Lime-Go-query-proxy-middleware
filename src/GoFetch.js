@@ -40,17 +40,18 @@ class GoFetch {
 
 	_query(operation, dataField) {
 		return makePromise(execute(this.gqlLink, operation))
-			.then((data) => {
-				if (data && data.data && _.has(data.data, dataField)){
+			.then((result) => {
+				if (result && result.data && _.has(result.data, dataField)){
 					try {
-						this.logger.info(`received data ${JSON.stringify(data.data[dataField], null, 2)}`);
+						this.logger.info(`received data ${JSON.stringify(result.data[dataField], null, 2)}`);
+						return result.data[dataField] || []; // result.data[datafield] can be null if nothing is found. allways return array!
 					}
 					catch (e) {
-						this.logger.info(`could not print response ${data}, ${e}`);
+						this.logger.info(`could not print response ${result}, ${e}`);
+						return result.data[dataField] || []; // result.data[datafield] can be null if nothing is found. allways return array!
 					}
-					return data.data[dataField] || []; // data.data[datafield] can be null if nothing is found. allways return array!
 				} else {
-					this.logger.info('some formatting error in the result: ', data);
+					this.logger.info('some formatting error in the result: ', result);
 					return [];
 				}
 			})
@@ -69,14 +70,14 @@ class GoFetch {
 		return operation;
 	}
 
-	_prepareQuery(searchFor, idOrQuery, excludeFields, objectName){
-		excludeFields = excludeFields || this.excludeFields;
+	_prepareQuery(searchFor, idOrQuery, exclude, objectType){
+		exclude = exclude || this.excludeFields;
 		const getNested = idOrQuery === 'id' ? true : false;
 		
-		const q = renderGqlQuery(objectName, excludeFields, getNested);
+		const q = renderGqlQuery({objectType, exclude, getNested});
 		const v = {[idOrQuery]: searchFor}; // [idOrQuery] sets id: or query:
 		const operation = this._prepareOperation(q,v);
-		return this._query(operation, objectName);
+		return this._query(operation, objectType);
 	}
 
 	organization(searchFor, excludeFields){

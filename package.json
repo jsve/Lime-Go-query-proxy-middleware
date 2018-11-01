@@ -4,7 +4,7 @@
 	"description": "Semantic component that searches and saves results from lime go.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jsve/Semantic-UI-React-Lime-Go-search"
+		"url": "https://github.com/jsve/Lime-Go-query-proxy-middleware"
 	},
 	"license": "MIT",
 	"main": "build/index.js",
