@@ -1,0 +1,54 @@
+{
+	"name": "lime-go-query-proxy-middleware",
+	"version": "0.0.1",
+	"description": "Semantic component that searches and saves results from lime go.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jsve/Semantic-UI-React-Lime-Go-search"
+	},
+	"license": "MIT",
+	"main": "build/index.js",
+	"peerDependencies": {
+		"express": "^4.16.0"
+	},
+	"dependencies": {
+		"apollo-link": "^1.2.3",
+		"apollo-link-http": "^1.5.5",
+		"dotenv": "^6.1.0",
+		"graphql": "^14.0.2",
+		"graphql-tag": "^2.10.0",
+		"lodash": "^4.17.11",
+		"node-fetch": "^2.2.0",
+		"winston": "^3.1.0"
+	},
+	"engines": {
+		"node": "8.9.4",
+		"npm": ">= 3.10.10"
+	},
+	"scripts": {
+		"test": "jest",
+		"start": "webpack --watch --mode=development",
+		"debug": "webpack && node --inspect--brk=9229",
+		"build": "jest && webpack --mode=production"
+	},
+	"author": {
+		"name": "Johan Svensson",
+		"email": "j_svensson@me.com"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^23.6.0",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-runtime": "^6.26.0",
+		"eslint": "^5.8.0",
+		"eslint-plugin-react": "^7.11.1",
+		"jest": "^23.6.0",
+		"regenerator-runtime": "^0.12.1",
+		"webpack": "^4.23.1",
+		"webpack-cli": "^3.1.2"
+	}
+}
