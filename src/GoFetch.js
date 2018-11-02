@@ -44,20 +44,20 @@ class GoFetch {
 				if (result && result.data && _.has(result.data, dataField)){
 					try {
 						this.logger.info(`received data ${JSON.stringify(result.data[dataField], null, 2)}`);
-						return result.data[dataField] || []; // result.data[datafield] can be null if nothing is found. allways return array!
+						return result.data[dataField] || null;
 					}
 					catch (e) {
 						this.logger.info(`could not print response ${result}, ${e}`);
-						return result.data[dataField] || []; // result.data[datafield] can be null if nothing is found. allways return array!
+						return result.data[dataField] || null;
 					}
 				} else {
 					this.logger.info('some formatting error in the result: ', result);
-					return [];
+					return null;
 				}
 			})
 			.catch((error) => {
 				this.logger.info(`received error ${error}`);
-				return [];
+				return null;
 			});
 	}
 

@@ -42,9 +42,9 @@ function goApiProxy(apiKey) {
 						persons
 					] = resultArray;
 					const result = {
-						organizations,
-						deals,
-						persons
+						organizations: organizations || [],
+						deals: deals || [],
+						persons: persons || []
 					};
 					res.json(result);
 					next();
@@ -62,7 +62,7 @@ function goApiProxy(apiKey) {
 			if (getPerson) resultPromise = getter.person(getPerson);
 
 			resultPromise.then((result) => {
-				res.json(result);
+				res.json(result|| {});
 				next();
 			}).catch((e) => {
 				logger.error('error when fetching data from lime go', e);
