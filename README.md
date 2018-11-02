@@ -32,7 +32,16 @@ or one of (if you know the corresponding id):
 
 ### Response
 For the queries you will get a response with this body:
-`empty`
+```javascript
+{
+    organizations: [...],
+    deals: [...],
+    persons: [...]
+}
+```
+Each array will be either empty or filled with the search results.
 
-For the gets you will get a response with this body:
-`empty`
+For the gets you will get a response with body containing the found object or an empty object:
+```javascript
+{...}
+```
