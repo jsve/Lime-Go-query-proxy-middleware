@@ -1,7 +1,7 @@
 {
 	"name": "lime-go-query-proxy-middleware",
 	"version": "0.0.1",
-	"description": "Semantic component that searches and saves results from lime go.",
+	"description": "Proxy built as express middleware that takes GET-requests and then searches and passes results from lime go GraphQL API.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/jsve/Lime-Go-query-proxy-middleware"
